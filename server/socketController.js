@@ -35,6 +35,7 @@ const connectWithSomeone = ({ request_from_socket, usersWantTochat, io }) => {
       shouldCreateOffer: true,
       connectedWith: goingToConnectWith,
     });
+    console.log("connect with backend", goingToConnectWith);
   }
   // notify user that he is connected with someone
   if (goingToConnectWith.connectionStatus) {
@@ -42,6 +43,7 @@ const connectWithSomeone = ({ request_from_socket, usersWantTochat, io }) => {
       shouldCreateOffer: false,
       connectedWith: requestFrom,
     });
+    console.log("connect with backend", requestFrom);
   }
 };
 
