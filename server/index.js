@@ -1,12 +1,17 @@
 //---------------------------------------------------------------- optimized code ----------------------------------------------------------------
 const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
 const http = require("http");
 const { Server } = require("socket.io");
 const initializeSocket = require("./socketManager");
 
-const FRONTEND_URL = "https://c5xltq-3000.csb.app";
+// const FRONTEND_URL = "http://localhost:3000/";
+const FRONTEND_URL = process.env.FRONTEND_URL;
+console.log(FRONTEND_URL);
 
 const app = express();
+app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: FRONTEND_URL,
