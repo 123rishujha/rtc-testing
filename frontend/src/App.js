@@ -252,7 +252,10 @@
 
 import { useRef, useState } from "react";
 import io from "socket.io-client";
-const SOCKET_SERVER_URL = "https://r5kxnp-8000.csb.app";
+// const SOCKET_SERVER_URL = "https://r5kxnp-8000.csb.app";
+
+const SOCKET_SERVER_URL = "https://rtc-testing.onrender.com";
+
 
 const OFFER_OPTIONS = {
   offerToReceiveAudio: 1,
