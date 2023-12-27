@@ -256,10 +256,16 @@ import io from "socket.io-client";
 
 const SOCKET_SERVER_URL = "https://rtc-testing.onrender.com";
 
-
 const OFFER_OPTIONS = {
   offerToReceiveAudio: 1,
   offerToReceiveVideo: 1,
+};
+
+const iceServers = {
+  iceServer: [
+    { urls: "stun:stun.serveces.mozilla.com" },
+    { urls: "stun:stun.l.google.com:19302" },
+  ],
 };
 
 function App() {
@@ -278,7 +284,7 @@ function App() {
 
   //initializeConnection --------------------
   const initializeConnection = async () => {
-    let pc = new RTCPeerConnection(null);
+    let pc = new RTCPeerConnection(iceServers);
     let tempConnectedWith = null;
     pc.onicecandidate = (event) => {
       if (event.candidate) {
@@ -369,7 +375,7 @@ function App() {
         if (shouldCreateOffer) {
           createOffer();
         }
-      },
+      }
     );
 
     socket.current.on("userDisconnected", () => {
